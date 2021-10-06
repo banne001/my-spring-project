@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-<h1>Home Page</h1>
-<h2>Create a web page</h2>
+<body class="container">
+<div class="p-5 jumbo rounded-3 text-center">
+    <div class="container-fluid py-5 flex-container">
+        <h1 class="display-5 fw-bold p-2 rounded">Do Something!</h1>
+        <p class="col-md-8 fs-4 p-2 w-75 rounded">Don't know what to do? Planning something? Use Bored!</p>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark accent">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bored</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Do Something!
+                    </a>
+                    <ul class="dropdown-menu accent" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Restaurants</a></li>
+                        <li><a class="dropdown-item" href="#">Activities</a></li>
+                        <li><a class="dropdown-item" href="#">Random</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="row px-5 rounded edges py-2 m-3 text-center">
+        <div class="col ">
+            <h3>Find a...</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col p-2">
+                        <button type="button" class="btn main-button px-5">Restaurant</button>
+                    </div>
+                    <div class="col p-2">
+                        <button type="button" class="btn main-button px-5">Activity</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col flex-container">
+            <button type="button" class="btn secondary-accent px-5 py-3">Create an Itinerary</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col p-5 m-1 rounded accent accent-text">
+            <h5>Having trouble where to eat? what to do? where to go? Even if it is for a quick bite or
+                for a vacation know what to do using Bored! This is the one place where you
+                can answer all of your questions!</h5>
+        </div>
+        <div class="col p-2 flex-container">
+            <button class="btn main-button w-75 " type="button">About Us</button>
+            <button class="btn main-button w-75" type="button">FAQs</button>
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-md-6 p-1">
+            <a href=""><img class="w-100 rounded" src="/images/dining.jpeg" alt="Food"></a>
+        </div>
+        <div class="col-md-6 p-1">
+            <a href=""><img class="w-100 rounded" src="/images/park.jpeg" alt="Park"></a>
+        </div>
+    </div>
+    <div class="row p-5 accent accent-text rounded m-3">
+        <div class="text-center">
+            <h3>About Us</h3>
+            <hr>
+            <p>We are a small company, here to help you and your traveling needs. We were created
+            to get people the best experience wherever they are. We take out the stress when going somewhere you have not been
+            before. </p>
+            <p>Use our Randomizing tool to bring somewhere you have not been before and explore what you are near by. </p>
+        </div>
+    </div>
+</div>
+
+<div class="footer py-3 rounded secondary-accent">
+    <div class="row text-center">
+        <div class="col">
+            <h4>Help</h4>
+            <p>Support</p>
+            <p>Manage Itinerary</p>
+        </div>
+        <div class="col">
+            <h4>Company</h4>
+            <p>About</p>
+            <p>Partnerships</p>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
 </body>
 </html>

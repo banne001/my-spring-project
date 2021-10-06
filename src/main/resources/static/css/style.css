@@ -1,0 +1,58 @@
+body{
+    background: #2F2FA2;
+    color:white;
+}
+
+.jumbo {
+    background-repeat: no-repeat;
+    width: 100%;
+    background-image: url('../images/jumbo.jpeg');
+    background-size: cover;
+}
+
+.jumbo h1 {
+    color: #F64c72;
+    background-color: #242582;
+}
+
+.jumbo p{
+    color: #99738E;
+    background-color: #2F2FA2;
+}
+
+.edges{
+    border: black solid 1px;
+}
+
+.accent{
+    background: #99738E;
+}
+.rounded{
+    border-radius: 8px !important;
+}
+.accent-text{
+    color: #242582;
+}
+
+.main-button{
+    color: #F64c72;
+    background: grey;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+}
+
+
+.secondary-accent{
+    color: white;
+    background: #553D67;
+}
+
+.footer{
+    background: white;
+    color: black;
+}
