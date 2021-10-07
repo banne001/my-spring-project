@@ -2,7 +2,7 @@ body{
     background: #2F2FA2;
     color:white;
 }
-
+/* JumboTron */
 .jumbo {
     background-repeat: no-repeat;
     width: 100%;
@@ -20,18 +20,25 @@ body{
     background-color: #2F2FA2;
 }
 
+/* Border Decoration */
 .edges{
     border: black solid 1px;
-}
-
-.accent{
-    background: #99738E;
 }
 .rounded{
     border-radius: 8px !important;
 }
+
+/* Accent colors for button and background */
+.accent{
+    background: #99738E;
+}
 .accent-text{
     color: #242582;
+}
+
+.secondary-accent{
+    color: white;
+    background: #553D67;
 }
 
 .main-button{
@@ -39,6 +46,7 @@ body{
     background: grey;
 }
 
+/* Space-evenly formatting */
 .flex-container{
     display: flex;
     flex-wrap: wrap;
@@ -46,12 +54,7 @@ body{
     justify-content: space-evenly;
 }
 
-
-.secondary-accent{
-    color: white;
-    background: #553D67;
-}
-
+/* Footer */
 .footer{
     background: white;
     color: black;
