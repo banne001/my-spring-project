@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version 1.0
  */
 @Controller
+@RequestMapping("bored")
 public class IndexController {
 
     /**
@@ -20,5 +21,15 @@ public class IndexController {
     @RequestMapping(value = {"", "/", "index", "index.html"})
     public String home() {
         return "home";
+    }
+
+    @RequestMapping("summary")
+    public String summary(){
+        return "summary";
+    }
+
+    @RequestMapping("element")
+    public String element(){
+        return "element";
     }
 }
