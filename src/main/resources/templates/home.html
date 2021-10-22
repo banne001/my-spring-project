@@ -1,15 +1,10 @@
+<!--
+
+
+-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/5.1.1/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/webjars/bootstrap/5.1.1/js/bootstrap.min.js"
-          th:href="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
-</head>
+<head th:replace="fragments/parts :: meta('Home Page')"></head>
 <body class="container">
 <!-- JumboTron -->
 <div class="p-5 jumbo rounded-3 text-center">
@@ -19,36 +14,7 @@
     </div>
 </div>
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark accent">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bored</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Do Something!
-                    </a>
-                    <ul class="dropdown-menu accent" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="bored/summary">Restaurants</a></li>
-                        <li><a class="dropdown-item" href="bored/summary">Activities</a></li>
-                        <li><a class="dropdown-item" href="bored/element">Random</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Manage</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<header th:replace="fragments/parts :: navbar"></header>
 <!-- Main body -->
 <div class="container">
     <div class="row px-5 rounded edges py-2 m-3 text-center">
@@ -101,19 +67,6 @@
     </div>
 </div>
 <!-- Footer -->
-<div class="footer py-3 rounded secondary-accent">
-    <div class="row text-center">
-        <div class="col">
-            <h4>Help</h4>
-            <p>Support</p>
-            <p>Manage Itinerary</p>
-        </div>
-        <div class="col">
-            <h4>Company</h4>
-            <p>About</p>
-            <p>Partnerships</p>
-        </div>
-    </div>
-</div>
+<footer th:replace="fragments/parts :: bottom"></footer>
 </body>
 </html>

@@ -1,10 +1,34 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Summary</title>
-</head>
+<head th:replace="fragments/parts :: meta('All Restaurants')"></head>
+
 <body>
-<h1>Summary</h1>
+<header th:replace="fragments/parts :: navbar"></header>
+<div class="container">
+    <h1>All Restaurants</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Restaurant</td>
+                <td>Address</td>
+                <td>City</td>
+                <td>Rating</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="rest: ${restaurants}">
+                <td>
+                    <a th:text="${rest.name}" th:href="@{'../bored/restaurant/' + ${rest.name}}" class="link-danger text-decoration-none"></a>
+                </td>
+                <td th:text="${rest.address}"></td>
+                <td th:text="${rest.city}"></td>
+                <td th:text="${rest.stars}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="fragments/parts :: bottom"></footer>
+
 </body>
 </html>

@@ -1,6 +1,10 @@
 package edu.greenriver.student.myspringproject.controllers;
 
+import edu.greenriver.student.myspringproject.models.Restaurant;
+import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -24,12 +28,23 @@ public class IndexController {
     }
 
     @RequestMapping("summary")
-    public String summary(){
+    public String summary(Model model){
+        model.addAttribute("restaurants", new RestaurantService().allRestaurants());
+
         return "summary";
     }
 
-    @RequestMapping("element")
-    public String element(){
+    @RequestMapping("restaurant")
+    public String element(Model model){
+        model.addAttribute("restaurant", new RestaurantService().random());
+
+        return "element";
+    }
+
+    @RequestMapping("restaurant/{name}")
+    public String element(Model model, @PathVariable String name){
+        model.addAttribute("specificRest", new RestaurantService().findByName(name));
+
         return "element";
     }
 }

@@ -1,6 +1,6 @@
 body{
-    background: #2F2FA2;
-    color:white;
+    background: white;
+    color:black;
 }
 /* JumboTron */
 .jumbo {
@@ -11,13 +11,13 @@ body{
 }
 
 .jumbo h1 {
-    color: #F64c72;
-    background-color: #242582;
+    color: #76323F;
+    background-color: #D7CEC7;
 }
 
 .jumbo p{
-    color: #99738E;
-    background-color: #2F2FA2;
+    color: #76323F;
+    background-color: #D7CEC7;
 }
 
 /* Border Decoration */
@@ -30,20 +30,20 @@ body{
 
 /* Accent colors for button and background */
 .accent{
-    background: #99738E;
+    background: #C09F80;
 }
 .accent-text{
-    color: #242582;
+    color: #565656;
 }
 
 .secondary-accent{
-    color: white;
-    background: #553D67;
+    color: #565656;
+    background: #C09F80;
 }
 
 .main-button{
-    color: #F64c72;
-    background: grey;
+    color: white;
+    background: #76323F;
 }
 
 /* Space-evenly formatting */
@@ -56,6 +56,25 @@ body{
 
 /* Footer */
 .footer{
-    background: white;
-    color: black;
+    background: #76323F;
+    color: white;
+}
+
+table{
+    table-layout: auto;
+    width: 100%;
+}
+
+thead{
+    font-size: large;
+    background: #76323F;
+    color: white;
+}
+
+tr:nth-child(even){
+    background: #ffe2c7;
+}
+
+td{
+    padding: 15px 30px 15px 30px;
 }
