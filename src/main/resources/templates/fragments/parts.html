@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/webjars/bootstrap/5.1.1/js/bootstrap.min.js"
             th:href="@{/webjars/bootstrap/5.1.1/js/bootstrap.min.js}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap}" rel="stylesheet">
 </head>
 <body>
 <header th:fragment="navbar">
     <nav class="navbar navbar-expand-lg accent navbar-dark main-button">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="/../bored" th:href="@{/bored}">Bored</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,14 +32,11 @@
                         <ul class="dropdown-menu accent" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="../bored/summary" th:href="@{/bored/summary}">Restaurants</a></li>
                             <li><a class="dropdown-item" href="../bored/summary" th:href="@{/bored/summary}">Activities</a></li>
-                            <li><a class="dropdown-item" href="../bored/element" th:href="@{/bored/element}">Random</a></li>
+                            <li><a class="dropdown-item" href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}">Random</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="../bored#aboutus">About Us</a>
                     </li>
                 </ul>
             </div>
@@ -44,8 +44,8 @@
     </nav>
 </header>
 
-<footer th:fragment="bottom">
-    <div class="footer py-3 rounded secondary-accent">
+<footer th:fragment="bottom" class="footer py-3 rounded">
+    <div>
         <div class="row text-center">
             <div class="col">
                 <h4>Help</h4>

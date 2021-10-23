@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/parts :: meta('Home Page')"></head>
-<body class="container">
+<body>
 <!-- JumboTron -->
 <div class="p-5 jumbo rounded-3 text-center">
     <div class="container-fluid py-5 flex-container">
@@ -17,52 +17,53 @@
 <header th:replace="fragments/parts :: navbar"></header>
 <!-- Main body -->
 <div class="container">
-    <div class="row px-5 rounded edges py-2 m-3 text-center">
+    <div class="row px-5 rounded py-2 m-3 text-center">
         <div class="col ">
             <h3>Find a...</h3>
             <div class="container">
                 <div class="row">
                     <div class="col p-2">
-                        <button type="button" class="btn main-button px-5">Restaurant</button>
+                        <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Restaurant</button></a>
                     </div>
                     <div class="col p-2">
-                        <button type="button" class="btn main-button px-5">Activity</button>
+                        <a href=""><button type="button" class="btn main-button w-100 py-4">Activity</button></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col flex-container">
-            <button type="button" class="btn secondary-accent px-5 py-3">Create an Itinerary</button>
+            <button type="button" class="btn secondary-accent w-75 py-4">Create an Itinerary</button>
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col p-5 m-1 rounded accent accent-text">
             <h5>Having trouble where to eat? what to do? where to go? Even if it is for a quick bite or
-                for a vacation know what to do using Bored! This is the one place where you
+                for a vacation, know what to do using Bored! This is the one place where you
                 can answer all of your questions!</h5>
         </div>
         <div class="col p-2 flex-container">
-            <button class="btn main-button w-75" type="button">About Us</button>
-            <button class="btn main-button w-75" type="button">FAQs</button>
+            <button class="btn main-button w-75 py-4" type="button">About Us</button>
+            <button class="btn main-button w-75 py-4" type="button">FAQs</button>
         </div>
     </div>
     <div class="row py-3">
         <div class="col-md-6 p-1">
-            <a href=""><img class="w-100 rounded" src="/images/dining.jpeg" alt="Food"></a>
+            <a href="../bored/summary" th:href="@{/bored/summary}"><img class="w-100 rounded" src="/images/dining.jpeg" alt="Food"></a>
         </div>
         <div class="col-md-6 p-1">
-            <a href=""><img class="w-100 rounded" src="/images/park.jpeg" alt="Park"></a>
+            <a href="../bored/summary" th:href="@{/bored/summary}"><img class="w-100 rounded" src="/images/park.jpeg" alt="Park"></a>
         </div>
     </div>
     <div class="row p-5 accent accent-text rounded m-3">
         <div class="text-center">
-            <h3>About Us</h3>
+            <h3 id="aboutus">About Us</h3>
             <hr>
             <p>We are a small company, here to help you and your traveling needs. We were created
             to get people the best experience wherever they are. We take out the stress when going somewhere you have
                 not been
             before. </p>
-            <p>Use our Randomizing tool to bring somewhere you have not been before and explore what you are nearby.</p>
+            <p>Use our Randomizing tool to bring somewhere you have not been before and explore new places around you.</p>
         </div>
     </div>
 </div>

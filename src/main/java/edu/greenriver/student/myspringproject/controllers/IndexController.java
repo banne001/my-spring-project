@@ -34,16 +34,16 @@ public class IndexController {
         return "summary";
     }
 
-    @RequestMapping("restaurant")
-    public String element(Model model){
-        model.addAttribute("restaurant", new RestaurantService().random());
+    @RequestMapping("restaurant/{name}")
+    public String element(Model model, @PathVariable String name){
+        model.addAttribute("specificRest", new RestaurantService().findByName(name));
 
         return "element";
     }
 
-    @RequestMapping("restaurant/{name}")
-    public String element(Model model, @PathVariable String name){
-        model.addAttribute("specificRest", new RestaurantService().findByName(name));
+    @RequestMapping("restaurant/random")
+    public String random(Model model){
+        model.addAttribute("specificRest", new RestaurantService().random());
 
         return "element";
     }

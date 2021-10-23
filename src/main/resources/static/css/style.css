@@ -1,6 +1,13 @@
-body{
+@font-face {
+    font-family: 'Poppins', sans-serif;
+}
+html, body{
+    font-family: 'Poppins', sans-serif;
     background: white;
     color:black;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 /* JumboTron */
 .jumbo {
@@ -58,11 +65,15 @@ body{
 .footer{
     background: #76323F;
     color: white;
+    bottom: 0;
+    position: relative;
 }
 
 table{
-    table-layout: auto;
     width: 100%;
+    bottom: 0;
+    left: 0;
+    position: relative;
 }
 
 thead{
@@ -77,4 +88,8 @@ tr:nth-child(even){
 
 td{
     padding: 15px 30px 15px 30px;
+}
+
+.content{
+    min-height: 90%;
 }

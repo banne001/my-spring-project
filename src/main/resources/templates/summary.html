@@ -5,7 +5,7 @@
 
 <body>
 <header th:replace="fragments/parts :: navbar"></header>
-<div class="container">
+<div class="container content">
     <h1>All Restaurants</h1>
     <table>
         <thead>
@@ -27,6 +27,10 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="m-2">
+        <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+    </div>
 </div>
 <footer th:replace="fragments/parts :: bottom"></footer>
 

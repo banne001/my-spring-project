@@ -24,4 +24,5 @@ public class Restaurant {
     private String state;
     private String postalCode;
     private double stars;
+    private String type;
 }

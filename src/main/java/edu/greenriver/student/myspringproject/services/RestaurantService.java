@@ -4,7 +4,6 @@ import edu.greenriver.student.myspringproject.models.Restaurant;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -22,17 +21,17 @@ public class RestaurantService {
     private List<Restaurant> allRest = new ArrayList<>(
             List.of(
                     Restaurant.builder().name("Pho Dinh").address("2822 Auburn Way N").city("Auburn")
-                            .postalCode("98002").stars(4.2).state("WA").build(),
+                            .postalCode("98002").stars(4.2).state("WA").type("Vietnamese").build(),
                     Restaurant.builder().name("Ting Tong Thai Cafe").address("20910 108th Ave SE").city("Kent")
-                            .postalCode("98031").stars(4.5).state("WA").build(),
+                            .postalCode("98031").stars(4.5).state("WA").type("Thai").build(),
                     Restaurant.builder().name("Oishi Yummy").address("10715 SE Carr Rd").city("Kent")
-                            .postalCode("98055").stars(4.8).state("WA").build(),
+                            .postalCode("98055").stars(4.8).state("WA").type("Asain").build(),
                     Restaurant.builder().name("Szechuan First").address("18124 E Valley Hwy").city("Kent")
-                            .postalCode("98032").stars(4.4).state("WA").build(),
+                            .postalCode("98032").stars(4.4).state("WA").type("Chinese").build(),
                     Restaurant.builder().name("Duke's Seafood").address("757 Southcenter Mall").city("Tukwilla")
-                            .postalCode("98188").stars(4.4).state("WA").build(),
+                            .postalCode("98188").stars(4.4).state("WA").type("Seafood").build(),
                     Restaurant.builder().name("Applebee's Grill and Bar").address("1441 D St NE").city("Auburn")
-                            .postalCode("98002").stars(4.0).state("WA").build()
+                            .postalCode("98002").stars(4.0).state("WA").type("Burgers").build()
             )
     );
 

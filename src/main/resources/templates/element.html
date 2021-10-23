@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Element</title>
-</head>
+<head th:replace="fragments/parts :: meta(${specificRest.getName()})"></head>
+
 <body>
-<h1>Element</h1>
+<header th:replace="fragments/parts :: navbar"></header>
+<div class="container p-5 content">
+    <h1 th:text="${specificRest.getName()}"></h1>
+    <hr>
+    <div class="row">
+
+        <div class="col-4">
+            <h5 th:text="'Address: ' + ${specificRest.getAddress()} + ', ' + ${specificRest.getCity()} + ' ' +
+                    ${specificRest.getState()} + ', ' + ${specificRest.getPostalCode()}"></h5>
+            <h5 th:text="'Type: ' + ${specificRest.getType()}"></h5>
+            <h5 th:text="'Rating: ' + ${specificRest.getStars()} "></h5>
+        </div>
+        <div class="col-8">Picture of Restaurant</div>
+    </div>
+    <div class="row m-2">
+        <div class="col p-2">
+            <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+        </div>
+        <div class="col p-2">
+            <a href="../bored/summary" th:href="@{/bored/summary}"><button type="button" class="btn main-button w-100 py-4">All Restaurant</button></a>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/parts :: bottom"></footer>
+
 </body>
 </html>
