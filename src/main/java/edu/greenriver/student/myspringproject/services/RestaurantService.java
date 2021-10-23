@@ -35,10 +35,20 @@ public class RestaurantService {
             )
     );
 
+    /**
+     * gets all the restaurants from the dummy data
+     * @return all restaurants
+     */
     public List<Restaurant> allRestaurants(){
         return allRest;
     }
 
+    /**
+     * gets the restaurant that matches name
+     *
+     * @param name the name of the restaurant
+     * @return the restaurant with the same name as the name param
+     */
     public Restaurant findByName(String name){
         return allRest.stream()
                 .filter(m -> m.getName().equals(name))
@@ -46,6 +56,10 @@ public class RestaurantService {
                 .orElse(null);
     }
 
+    /**
+     * Gets the top three rated restaurants
+     * @return top three restaurants
+     */
     public List<Restaurant> topThree(){
         return allRest.stream()
                 .sorted()
@@ -53,6 +67,11 @@ public class RestaurantService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * randomly picks a restaurant
+     *
+     * @return a random restaurant
+     */
     public Restaurant random(){
         Random random = new Random();
 

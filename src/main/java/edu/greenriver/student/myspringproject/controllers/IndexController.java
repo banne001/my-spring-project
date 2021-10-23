@@ -27,13 +27,21 @@ public class IndexController {
         return "home";
     }
 
+    /**
+     * Summary page to view all restaurants
+     * @return html page
+     */
     @RequestMapping("summary")
     public String summary(Model model){
         model.addAttribute("restaurants", new RestaurantService().allRestaurants());
 
         return "summary";
     }
-
+    /**
+     * Restaurant page to view a specific page given the name
+     * of the restaurant
+     * @return html page
+     */
     @RequestMapping("restaurant/{name}")
     public String element(Model model, @PathVariable String name){
         model.addAttribute("specificRest", new RestaurantService().findByName(name));
@@ -41,6 +49,11 @@ public class IndexController {
         return "element";
     }
 
+    /**
+     * Restaurant page that gets a random restaurant from the database and
+     * returns the html page to show the random restaurant
+     * @return html page
+     */
     @RequestMapping("restaurant/random")
     public String random(Model model){
         model.addAttribute("specificRest", new RestaurantService().random());
