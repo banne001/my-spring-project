@@ -27,9 +27,13 @@
             </tr>
         </tbody>
     </table>
-
-    <div class="m-2">
-        <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+    <div class="row m-2">
+        <div class="col p-2">
+            <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+        </div>
+        <div class="col p-2">
+            <a href="/../bored" th:href="@{/../bored}"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>
+        </div>
     </div>
 </div>
 <footer th:replace="fragments/parts :: bottom"></footer>
