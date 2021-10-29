@@ -99,5 +99,11 @@ public class IndexController {
         return "redirect:/bored/summary";
     }
 
+    @RequestMapping("restaurant/deleteRestaurant/{id}")
+    public String deleteRestaurant(@PathVariable int id){
+        service.deleteByID(id);
+        return "redirect:/bored/summary";
+    }
+
 
 }

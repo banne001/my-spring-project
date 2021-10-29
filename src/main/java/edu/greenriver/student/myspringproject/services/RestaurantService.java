@@ -72,5 +72,9 @@ public class RestaurantService {
     public void save(Restaurant res){
         repo.save(res);
     }
+
+    public void deleteByID(int id){
+        repo.deleteById(id);
+    }
 }
 
