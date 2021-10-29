@@ -13,8 +13,8 @@
 <body>
 <header th:replace="fragments/parts :: navbar"></header>
 <div class="container p-5 content">
-    <h3>Add a New Restaurant!</h3>
-    <form th:action="@{/bored/restaurant/addRestaurant}" th:object="${restaurant}" method="post">
+    <h3 th:text="${title}"></h3>
+    <form th:action="@{${redirectTo}}" th:object="${restaurant}" method="post">
         <div class="form-group">
             <label for="inputName">Name</label>
             <input type="text" class="form-control" id="inputName" th:field="*{name}">
@@ -45,7 +45,7 @@
             <label for="inputType">Type of Food</label>
             <input type="text" id="inputType" class="form-control" th:field="*{type}">
         </div>
-        <button type="submit" class="btn main-button w-100 py-4">Add New Language</button>
+        <button type="submit" class="btn main-button w-100 py-4" th:text="${title}"></button>
     </form>
 </div>
 <footer th:replace="fragments/parts :: bottom"></footer>

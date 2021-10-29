@@ -68,7 +68,9 @@ public class IndexController {
 
     @GetMapping("restaurant/addRestaurant")
     public String loadForm(Model model){
+        model.addAttribute("title", "Add a New Restaurant!");
         model.addAttribute("restaurant", new Restaurant());
+        model.addAttribute("redirectTo", "/bored/restaurant/addRestaurant");
         return "add-restaurant";
     }
 
@@ -79,4 +81,23 @@ public class IndexController {
         service.save(res);
         return "redirect:/bored/summary";
     }
+
+    @GetMapping("restaurant/editRestaurant/{id}")
+    public String editForm(Model model, @PathVariable int id){
+        model.addAttribute("title", "Update Restaurant");
+        model.addAttribute("restaurant", service.findById(id));
+        model.addAttribute("redirectTo", "/bored/restaurant/editRestaurant/" + id);
+
+        return "add-restaurant";
+    }
+
+    @PostMapping("restaurant/editRestaurant/{id}")
+    public String handleEditForm(@ModelAttribute Restaurant res){
+        System.out.println("Posted from form " + res);
+
+        service.save(res);
+        return "redirect:/bored/summary";
+    }
+
+
 }
