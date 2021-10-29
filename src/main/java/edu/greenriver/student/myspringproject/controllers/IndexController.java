@@ -17,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("bored")
 public class IndexController {
 
+    private RestaurantService service;
+
+    public IndexController(RestaurantService service) {
+        this.service = service;
+    }
+
     /**
      * Map for main pages
      * include "", "/", "index", "index.html"
@@ -33,7 +39,7 @@ public class IndexController {
      */
     @RequestMapping("summary")
     public String summary(Model model){
-        model.addAttribute("restaurants", new RestaurantService().allRestaurants());
+        model.addAttribute("restaurants", service.allRestaurants());
 
         return "summary";
     }
@@ -42,9 +48,9 @@ public class IndexController {
      * of the restaurant
      * @return html page
      */
-    @RequestMapping("restaurant/{name}")
-    public String element(Model model, @PathVariable String name){
-        model.addAttribute("specificRest", new RestaurantService().findByName(name));
+    @RequestMapping("restaurant/{id}")
+    public String element(Model model, @PathVariable int id){
+        model.addAttribute("specificRest", service.findById(id));
 
         return "element";
     }
@@ -56,7 +62,7 @@ public class IndexController {
      */
     @RequestMapping("restaurant/random")
     public String random(Model model){
-        model.addAttribute("specificRest", new RestaurantService().random());
+        model.addAttribute("specificRest", service.random());
 
         return "element";
     }

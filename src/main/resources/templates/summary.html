@@ -26,11 +26,11 @@
         <tbody>
             <tr th:each="rest: ${restaurants}">
                 <td>
-                    <a th:text="${rest.name}" th:href="@{'../bored/restaurant/' + ${rest.name}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="${rest.getName()}" th:href="@{'../bored/restaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
-                <td th:text="${rest.address}"></td>
-                <td th:text="${rest.city}"></td>
-                <td th:text="${rest.stars}"></td>
+                <td th:text="${rest.getAddress()}"></td>
+                <td th:text="${rest.getCity()}"></td>
+                <td th:text="${rest.getStars()}"></td>
             </tr>
         </tbody>
     </table>
