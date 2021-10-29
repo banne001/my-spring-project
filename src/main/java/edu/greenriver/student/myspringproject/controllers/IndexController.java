@@ -4,8 +4,7 @@ import edu.greenriver.student.myspringproject.models.Restaurant;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Index Controller to route users to correct web pages
@@ -65,5 +64,19 @@ public class IndexController {
         model.addAttribute("specificRest", service.random());
 
         return "element";
+    }
+
+    @GetMapping("restaurant/addRestaurant")
+    public String loadForm(Model model){
+        model.addAttribute("restaurant", new Restaurant());
+        return "add-restaurant";
+    }
+
+    @PostMapping("restaurant/addRestaurant")
+    public String handleForm(@ModelAttribute Restaurant res){
+        System.out.println("Posted from form " + res);
+
+        service.save(res);
+        return "redirect:/bored/summary";
     }
 }

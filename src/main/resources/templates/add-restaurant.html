@@ -1,0 +1,53 @@
+<!--
+     element page that shows a specific page with all its contents
+
+     Author: Blezyl Santos
+     File: add-restaurant.html
+     Date: 10/29/2021
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/parts :: meta('Add a Language')"></head>
+
+<body>
+<header th:replace="fragments/parts :: navbar"></header>
+<div class="container p-5 content">
+    <h3>Add a New Restaurant!</h3>
+    <form th:action="@{/bored/restaurant/addRestaurant}" th:object="${restaurant}" method="post">
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" th:field="*{address}">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" th:field="*{city}">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" id="inputState" th:field="*{state}">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip" th:field="*{postalCode}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputStars">Stars</label>
+            <input type="text" class="form-control" id="inputStars" th:field="*{stars}">
+        </div>
+        <div class="form-group pb-2">
+            <label for="inputType">Type of Food</label>
+            <input type="text" id="inputType" class="form-control" th:field="*{type}">
+        </div>
+        <button type="submit" class="btn main-button w-100 py-4">Add New Language</button>
+    </form>
+</div>
+<footer th:replace="fragments/parts :: bottom"></footer>
+</body>
+</html>

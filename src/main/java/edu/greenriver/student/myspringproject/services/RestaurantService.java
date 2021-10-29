@@ -64,5 +64,13 @@ public class RestaurantService {
 
         return res;
     }
+
+    /**
+     *
+     * @param res Saves the Restaurant object to the repo
+     */
+    public void save(Restaurant res){
+        repo.save(res);
+    }
 }
 
