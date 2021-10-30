@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * Index Controller to route users to correct web pages
  *
  * @author blezyl santos
- * @version 1.0
+ * @version 1.1
  */
 @Controller
 @RequestMapping("bored")
@@ -104,6 +104,4 @@ public class IndexController {
         service.deleteByID(id);
         return "redirect:/bored/summary";
     }
-
-
 }
