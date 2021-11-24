@@ -11,3 +11,10 @@ spring:
   sql:
     init:
       mode: always
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

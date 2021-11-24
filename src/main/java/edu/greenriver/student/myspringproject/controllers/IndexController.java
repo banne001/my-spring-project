@@ -104,4 +104,14 @@ public class IndexController {
         service.deleteByID(id);
         return "redirect:/bored/summary";
     }
+
+    @GetMapping("restaurants")
+    public String getWebApiRestaurants(){
+        return "restaurants.html";
+    }
+
+    @GetMapping("activities")
+    public String getWebApiActivities(){
+        return "activities.html";
+    }
 }
