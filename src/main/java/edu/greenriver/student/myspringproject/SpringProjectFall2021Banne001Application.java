@@ -1,6 +1,8 @@
 package edu.greenriver.student.myspringproject;
 
+import edu.greenriver.student.myspringproject.dbs.ActivityRepository;
 import edu.greenriver.student.myspringproject.dbs.RestaurantRepository;
+import edu.greenriver.student.myspringproject.models.Activity;
 import edu.greenriver.student.myspringproject.models.Restaurant;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +25,7 @@ public class SpringProjectFall2021Banne001Application {
         ApplicationContext context = SpringApplication.run(SpringProjectFall2021Banne001Application.class, args);
 
         RestaurantRepository repo = context.getBean(RestaurantRepository.class);
+        ActivityRepository activityRepository = context.getBean(ActivityRepository.class);
 
         List<Restaurant> allRest = new ArrayList<>(
                 List.of(
@@ -41,10 +44,33 @@ public class SpringProjectFall2021Banne001Application {
                 )
         );
 
+        List<Activity> allActivities = new ArrayList<>(
+                List.of(
+                        Activity.builder().name("Space Needle").address("400 Broad St").city("Seattle")
+                                .postalCode("98109").state("WA").stars(4.6).build(),
+                        Activity.builder().name("Escape Room").address("5005 Ohio Ave S").city("Seattle")
+                                .postalCode("98134").state("WA").stars(4.8).build(),
+                        Activity.builder().name("Game Farm Park").address("3030 R St SE,").city("Auburn")
+                                .postalCode("98002").state("WA").stars(4.4).build(),
+                        Activity.builder().name("Snoqualmie Falls").address("").city("Snoqualmie")
+                                .postalCode("98024").state("WA").stars(4.8).build(),
+                        Activity.builder().name("GreenLake Boathouse").address("7351 East Green Lake Dr N ").city("Seattle")
+                                .postalCode("98115").state("WA").stars(4.4).build(),
+                        Activity.builder().name("Cedar River trail Park").address("1060 Nishiwaki Ln").city("Renton")
+                                .postalCode("98057").state("WA").stars(4.3).build()
+                )
+        );
+
         for(Restaurant rest : allRest){
             repo.save(rest);
         }
         System.out.println("All Restaurant saved in DB");
+
+        for(Activity act : allActivities){
+            activityRepository.save(act);
+        }
+        System.out.println("All Activity saved in DB");
+
     }
 
 }
