@@ -114,4 +114,9 @@ public class IndexController {
     public String getWebApiActivities(){
         return "activities.html";
     }
+
+    @GetMapping("admin")
+    public String getAdmin(){
+        return "admin.html";
+    }
 }

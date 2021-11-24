@@ -1,0 +1,35 @@
+<!--
+     home page
+
+     Author: Blezyl Santos
+     File: admin.html
+     Date: 11/24/2021
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/parts :: meta('Home Page')"></head>
+<body>
+<!-- Navigation Bar -->
+<header th:replace="fragments/parts :: navbar"></header>
+<!-- Main body -->
+<div class="container p-3">
+    <h1>About Application</h1>
+    <h3>Metrics</h3>
+    <div id="metric" class="container">
+
+    </div>
+    <h3>Environment</h3>
+    <div id="env" class="container">
+
+    </div>
+    <h3>Mappings</h3>
+    <div id="maps" class="container">
+
+    </div>
+</div>
+<!-- Footer -->
+<footer th:replace="fragments/parts :: bottom"></footer>
+<script src="/js/metrics.js"></script>
+</body>
+</html>
