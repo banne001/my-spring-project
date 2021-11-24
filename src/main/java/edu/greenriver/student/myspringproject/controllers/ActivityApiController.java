@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("activities")
+@CrossOrigin(origins="http://localhost:8080")
 public class ActivityApiController {
     private ActivityService service;
 

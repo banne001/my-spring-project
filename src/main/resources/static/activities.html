@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/webjars/bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/webjars/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap}" rel="stylesheet">
+</head>
+<body>
+<div class="container content">
+    <h1>All Activities</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>Restaurant</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>Rating</td>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+    <div class="row m-2">
+        <div class="col p-2">
+            <a href="/../bored"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>
+        </div>
+    </div>
+</div>
+
+<script src="js/webapiact.js"></script>
+</body>
+</html>
