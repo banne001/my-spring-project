@@ -2,8 +2,8 @@
      element page that shows a specific page with all its contents
 
      Author: Blezyl Santos
-     File: element.html
-     Date: 10/22/2021
+     File: elementActivity.html
+     Date: 11/24/2021
 
 -->
 <!DOCTYPE html>
@@ -20,17 +20,16 @@
         <div class="col-4">
             <h5 th:text="'Address: ' + ${specificRest.getAddress()} + ', ' + ${specificRest.getCity()} + ' ' +
                     ${specificRest.getState()} + ', ' + ${specificRest.getPostalCode()}"></h5>
-            <h5 th:text="'Type: ' + ${specificRest.getType()}"></h5>
             <h5 th:text="'Rating: ' + ${specificRest.getStars()} "></h5>
         </div>
-        <div class="col-8">Picture of Restaurant</div>
+        <div class="col-8">Picture of Activity</div>
     </div>
     <div class="row m-2">
         <div class="col p-2">
             <a href="../bored/random" th:href="@{/bored/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Thing To Do</button></a>
         </div>
         <div class="col p-2">
-            <a href="../bored/restaurants/summary" th:href="@{/bored/restaurants/summary}"><button type="button" class="btn main-button w-100 py-4">All Restaurant</button></a>
+            <a href="../bored/activities/summary" th:href="@{/bored/activities/summary}"><button type="button" class="btn main-button w-100 py-4">All Activities</button></a>
         </div>
     </div>
 </div>

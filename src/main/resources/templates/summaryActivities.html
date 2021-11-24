@@ -1,0 +1,60 @@
+<!--
+     Summary page
+
+     Author: Blezyl Santos
+     File: summary.html
+     Date: 10/22/2021
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/parts :: meta('All Restaurants')"></head>
+
+<body>
+<header th:replace="fragments/parts :: navbar"></header>
+<div class="container content">
+    <h1>All Activity</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>Activity</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>Rating</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rest: ${activities}">
+            <td>
+                <a th:text="${rest.getName()}" th:href="@{'../../bored/activity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+            </td>
+            <td th:text="${rest.getAddress()}"></td>
+            <td th:text="${rest.getCity()}"></td>
+            <td th:text="${rest.getStars()}"></td>
+            <td>
+                <a th:text="Edit" th:href="@{'/../bored/activity/editActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+            </td>
+            <td>
+                <a th:text="Delete" th:href="@{'/../bored/activity/deleteActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row m-2">
+        <div class="col p-2">
+            <a href="../bored/random" th:href="@{/bored/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Things To Do</button></a>
+        </div>
+        <div class="col p-2">
+            <a href="/../bored/activity/addActivity" th:href="@{/../bored/activity/addActivity}"><button type="button" class="btn main-button w-100 py-4">Add a New Activity</button></a>
+        </div>
+        <div class="col p-2">
+            <a href="/../bored" th:href="@{/../bored}"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments/parts :: bottom"></footer>
+
+</body>
+</html>

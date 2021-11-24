@@ -75,13 +75,14 @@ public class RestaurantService {
      * @param res Saves the Restaurant object to the repo
      */
     public Restaurant save(Restaurant res){
-        if(repo.existsById(res.getId())){
-            throw new NoSuchElementException("Missing Product");
-        }
+
         return repo.save(res);
     }
 
     public Restaurant editRestaurant(Restaurant restaurant){
+        if(!repo.existsById(restaurant.getId())){
+            throw new NoSuchElementException("Missing Product");
+        }
         return repo.save(restaurant);
     }
 

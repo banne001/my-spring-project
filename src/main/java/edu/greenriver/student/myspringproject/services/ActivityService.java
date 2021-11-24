@@ -67,12 +67,13 @@ public class ActivityService {
     }
 
     public Activity save(Activity activity){
-        if(repo.existsById(activity.getId())){
-            throw new NoSuchElementException("Missing Product");
-        }
+
         return repo.save(activity);
     }
     public Activity editActivity(Activity activity){
+        if(!repo.existsById(activity.getId())){
+            throw new NoSuchElementException("Missing Product");
+        }
         return repo.save(activity);
     }
 

@@ -1,10 +1,14 @@
 package edu.greenriver.student.myspringproject.controllers;
 
+import edu.greenriver.student.myspringproject.models.Activity;
 import edu.greenriver.student.myspringproject.models.Restaurant;
+import edu.greenriver.student.myspringproject.services.ActivityService;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 /**
  * Index Controller to route users to correct web pages
@@ -17,9 +21,11 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
 
     private RestaurantService service;
+    private ActivityService activityService;
 
-    public IndexController(RestaurantService service) {
+    public IndexController(RestaurantService service, ActivityService activityService) {
         this.service = service;
+        this.activityService = activityService;
     }
 
     /**
@@ -36,14 +42,26 @@ public class IndexController {
      * Summary page to view all restaurants
      * @return html page
      */
-    @RequestMapping("summary")
+    @RequestMapping("restaurants/summary")
     public String summary(Model model){
-        model.addAttribute("restaurants", service.allRestaurants());
+        model.addAttribute("restaurant", service.allRestaurants());
 
         return "summary";
     }
+
     /**
-     * Restaurant page to view a specific page given the name
+     * Summary page to view all Activities
+     * @return html page
+     */
+    @RequestMapping("activities/summary")
+    public String summaryActivities(Model model){
+        model.addAttribute("activities", activityService.allActivity());
+
+        return "summaryActivities";
+    }
+
+    /**
+     * Restaurant page to view a specific page given the id
      * of the restaurant
      * @return html page
      */
@@ -55,15 +73,31 @@ public class IndexController {
     }
 
     /**
+     * Activity page to view a specific page given the id
+     * of the Activity
+     * @return html page
+     */
+    @RequestMapping("activity/{id}")
+    public String elementActivity(Model model, @PathVariable int id){
+        model.addAttribute("specificRest", activityService.findById(id));
+
+        return "elementActivity";
+    }
+
+    /**
      * Restaurant page that gets a random restaurant from the database and
      * returns the html page to show the random restaurant
      * @return html page
      */
-    @RequestMapping("restaurant/random")
+    @RequestMapping("/random")
     public String random(Model model){
-        model.addAttribute("specificRest", service.random());
-
-        return "element";
+        Random random = new Random();
+        if(random.nextInt(500) > 250){
+            model.addAttribute("specificRest", service.random());
+            return "element";
+        }
+        model.addAttribute("specificRest", activityService.random());
+        return "elementActivity";
     }
 
     @GetMapping("restaurant/addRestaurant")
@@ -74,12 +108,28 @@ public class IndexController {
         return "add-restaurant";
     }
 
+    @GetMapping("activity/addActivity")
+    public String loadFormActivity(Model model){
+        model.addAttribute("title", "Add a New Activity!");
+        model.addAttribute("activity", new Activity());
+        model.addAttribute("redirectTo", "/bored/activity/addActivity");
+        return "add-activity";
+    }
+
     @PostMapping("restaurant/addRestaurant")
     public String handleForm(@ModelAttribute Restaurant res){
         System.out.println("Posted from form " + res);
 
         service.save(res);
-        return "redirect:/bored/summary";
+        return "redirect:/bored/restaurants/summary";
+    }
+
+    @PostMapping("activity/addActivity")
+    public String handleFormActivity(@ModelAttribute Activity activity){
+        System.out.println("Posted from form " + activity);
+
+        activityService.save(activity);
+        return "redirect:/bored/activities/summary";
     }
 
     @GetMapping("restaurant/editRestaurant/{id}")
@@ -91,18 +141,41 @@ public class IndexController {
         return "add-restaurant";
     }
 
+    @GetMapping("activity/editActivity/{id}")
+    public String editFormActivity(Model model, @PathVariable int id){
+        model.addAttribute("title", "Update Activity");
+        model.addAttribute("activity", activityService.findById(id));
+        model.addAttribute("redirectTo", "/bored/activity/editActivity/" + id);
+
+        return "add-activity";
+    }
+
     @PostMapping("restaurant/editRestaurant/{id}")
     public String handleEditForm(@ModelAttribute Restaurant res){
-        System.out.println("Posted from form " + res);
+        System.out.println("Posted from form RESTAURANT" + res);
 
         service.save(res);
-        return "redirect:/bored/summary";
+        return "redirect:/bored/restaurants/summary";
+    }
+
+    @PostMapping("activity/editActivity/{id}")
+    public String handleEditFormActivity(@ModelAttribute Activity activity){
+        System.out.println("Posted from form ACTIVITY" + activity);
+
+        activityService.save(activity);
+        return "redirect:/bored/activities/summary";
     }
 
     @RequestMapping("restaurant/deleteRestaurant/{id}")
     public String deleteRestaurant(@PathVariable int id){
         service.deleteByID(id);
-        return "redirect:/bored/summary";
+        return "redirect:/bored/restaurants/summary";
+    }
+
+    @RequestMapping("activity/deleteActivity/{id}")
+    public String deleteActivity(@PathVariable int id){
+        activityService.deleteByID(id);
+        return "redirect:/bored/activities/summary";
     }
 
     @GetMapping("restaurants")

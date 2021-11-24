@@ -27,26 +27,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="rest: ${restaurants}">
+            <tr th:each="rest: ${restaurant}">
                 <td>
-                    <a th:text="${rest.getName()}" th:href="@{'../bored/restaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="${rest.getName()}" th:href="@{'/../bored/restaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
                 <td th:text="${rest.getAddress()}"></td>
                 <td th:text="${rest.getCity()}"></td>
                 <td th:text="${rest.getStars()}"></td>
                 <td th:text="${rest.getType()}"></td>
                 <td>
-                    <a th:text="Edit" th:href="@{'../bored/restaurant/editRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="Edit" th:href="@{'/../bored/restaurant/editRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
                 <td>
-                    <a th:text="Delete" th:href="@{'../bored/restaurant/deleteRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="Delete" th:href="@{'/../bored/restaurant/deleteRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
             </tr>
         </tbody>
     </table>
     <div class="row m-2">
         <div class="col p-2">
-            <a href="../bored/restaurant/random" th:href="@{/bored/restaurant/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+            <a href="/../bored/random" th:href="@{/bored/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
         </div>
         <div class="col p-2">
             <a href="/../bored/restaurant/addRestaurant" th:href="@{/../bored/restaurant/addRestaurant}"><button type="button" class="btn main-button w-100 py-4">Add a New Restaurant</button></a>
