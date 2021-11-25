@@ -1,3 +1,10 @@
+/**
+ * Web Api to get the Restaurants
+ * and display to the page
+ *
+ * @author Blezyl Santos
+ * @version 11/24
+ */
 window.onload = function() {
     //access the API here...
     let uri = "http://localhost:8080/activities";
@@ -19,25 +26,3 @@ window.onload = function() {
         });
 }
 
-function displayDataElement(jsonData){
-    console.log(jsonData);
-    let contentArea = document.getElementById("tableBody");
-
-    for(let i = 0; i < jsonData.length; i++){
-        addData(contentArea, jsonData[i]);
-    }
-}
-
-function addData(contentArea, data){
-    let row = contentArea.insertRow(-1);
-
-    let name = row.insertCell(0);
-    let address = row.insertCell(1);
-    let city = row.insertCell(2);
-    let rating = row.insertCell(3);
-
-    name.innerHTML = data.name;
-    address.innerHTML = data.address;
-    city.innerHTML = data.city;
-    rating.innerHTML = data.stars;
-}

@@ -4,7 +4,6 @@ import edu.greenriver.student.myspringproject.dbs.RestaurantRepository;
 import edu.greenriver.student.myspringproject.models.Restaurant;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -12,20 +11,28 @@ import java.util.stream.Collectors;
 
 /**
  * Restaurant Service class to access the restaurant data
- * and manipulate it for the use that the user needs it for
  *
  * @author blezyl
- * @version 10.12
+ * @version 11/24
  */
 @Service
 public class RestaurantService {
 
     private RestaurantRepository repo;
 
+    /**
+     * Constructor
+     *
+     * @param repo declares the repo
+     */
     public RestaurantService(RestaurantRepository repo) {
         this.repo = repo;
     }
 
+    /**
+     * All the Restaurants
+     * @return List of Restaurants
+     */
     public List<Restaurant> allRestaurants(){
         return repo.findAll();
     }
@@ -46,11 +53,10 @@ public class RestaurantService {
      */
     public List<Restaurant> topThree(){
         List<Restaurant> all = repo.findAll();
-        List<Restaurant> top3 = all.stream()
+        return all.stream()
                 .sorted()
                 .limit(3)
                 .collect(Collectors.toList());
-        return top3;
     }
 
     /**
@@ -61,24 +67,36 @@ public class RestaurantService {
     public Restaurant random(){
         List<Restaurant> all = repo.findAll();
         Random rand = new Random();
-        Restaurant res = all.get(rand.nextInt(all.size()));
 
-        return res;
+        return all.get(rand.nextInt(all.size()));
     }
 
+    /**
+     * Checks if the given id exists
+     *
+     * @param id the id of the restaurant
+     * @return boolean true if it exists, otherwise false
+     */
     public boolean restaurantExists(int id){
         return repo.existsById(id);
     }
 
     /**
+     * Saves the Restaurant to the repo
      *
      * @param res Saves the Restaurant object to the repo
+     * @return the restaurant that is saved
      */
     public Restaurant save(Restaurant res){
-
         return repo.save(res);
     }
 
+    /**
+     * Save the updated Restaurant
+     *
+     * @param restaurant the restaurant to be updated
+     * @return the updated restaurant
+     */
     public Restaurant editRestaurant(Restaurant restaurant){
         if(!repo.existsById(restaurant.getId())){
             throw new NoSuchElementException("Missing Product");
@@ -86,6 +104,11 @@ public class RestaurantService {
         return repo.save(restaurant);
     }
 
+    /**
+     * Delete the given Id
+     *
+     * @param id to be deleted
+     */
     public void deleteByID(int id){
         repo.deleteById(id);
     }

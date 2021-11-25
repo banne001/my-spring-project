@@ -1,3 +1,11 @@
+/**
+ * Web Api to get the Actuator Endpoints
+ * Using metrics/http.server.requests, mappings, and env
+ * displays to the page
+ *
+ * @author Blezyl Santos
+ * @version 11/24
+ */
 window.onload = function() {
     //access the API here...
     let config = {
@@ -37,6 +45,10 @@ window.onload = function() {
         });
 }
 
+/**
+ * Displays the http requests to the page
+ * @param jsonData the json data from the api
+ */
 function displayMetrics(jsonData){
     let contentArea = document.getElementById("metric");
     let measurements = jsonData.measurements;
@@ -46,6 +58,10 @@ function displayMetrics(jsonData){
 
 }
 
+/**
+ * Displays the mappings to the page
+ * @param jsonData the json data from the api
+ */
 function displayMappings(jsonData){
     let mappings = jsonData.contexts.application.mappings.dispatcherServlets.dispatcherServlet;
     let contentArea = document.getElementById("maps");
@@ -66,6 +82,10 @@ function displayMappings(jsonData){
     }
 }
 
+/**
+ * Displays the environment to the page
+ * @param jsonData the json data from the api
+ */
 function displayEnv(jsonData){
 
     let properties = jsonData.propertySources[4].properties;

@@ -1,3 +1,10 @@
+/**
+ * Web Api to get the Restaurants
+ * and display to the page
+ *
+ * @author Blezyl Santos
+ * @version 11/24
+ */
 window.onload = function() {
     //access the API here...
     let uri = "http://localhost:8080/restaurants";
@@ -19,6 +26,10 @@ window.onload = function() {
         });
 }
 
+/**
+ * Add the data to the table in tableBody of Restaurants
+ * @param jsonData the jsonData from the webapi of restaurants
+ */
 function displayDataElement(jsonData){
     console.log(jsonData);
     let contentArea = document.getElementById("tableBody");
@@ -28,6 +39,10 @@ function displayDataElement(jsonData){
     }
 }
 
+/**
+ * Add the row data to the table in tableBody of Restaurants
+ * @param jsonData the jsonData from the webapi of restaurants
+ */
 function addData(contentArea, data){
     let row = contentArea.insertRow(-1);
 
