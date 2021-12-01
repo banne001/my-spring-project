@@ -2,12 +2,15 @@ package edu.greenriver.student.myspringproject;
 
 import edu.greenriver.student.myspringproject.dbs.ActivityRepository;
 import edu.greenriver.student.myspringproject.dbs.RestaurantRepository;
+import edu.greenriver.student.myspringproject.dbs.UserRepository;
 import edu.greenriver.student.myspringproject.models.Activity;
 import edu.greenriver.student.myspringproject.models.Restaurant;
+import edu.greenriver.student.myspringproject.models.User;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class SpringProjectFall2021Banne001Application {
 
         RestaurantRepository repo = context.getBean(RestaurantRepository.class);
         ActivityRepository activityRepository = context.getBean(ActivityRepository.class);
+
 
         List<Restaurant> allRest = new ArrayList<>(
                 List.of(
@@ -61,6 +65,8 @@ public class SpringProjectFall2021Banne001Application {
                 )
         );
 
+
+
         for(Restaurant rest : allRest){
             repo.save(rest);
         }
@@ -72,5 +78,6 @@ public class SpringProjectFall2021Banne001Application {
         System.out.println("All Activity saved in DB");
 
     }
+
 
 }
