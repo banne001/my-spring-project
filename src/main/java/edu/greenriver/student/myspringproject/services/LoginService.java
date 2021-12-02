@@ -23,4 +23,8 @@ public class LoginService implements UserDetailsService {
         }
         throw new UsernameNotFoundException("username is not recognized");
     }
+
+    public User save(User user){
+        return repo.save(user);
+    }
 }

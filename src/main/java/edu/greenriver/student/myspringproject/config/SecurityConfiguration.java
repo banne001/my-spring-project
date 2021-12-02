@@ -28,20 +28,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         BCryptPasswordEncoder encoder = encoder();
-        //auth.userDetailsService(service).passwordEncoder(encoder);
         auth
-            .inMemoryAuthentication()
-            .withUser("myuser")
-                .password(encoder.encode("pass"))
-                .roles("useracct")
-            .and()
-            .withUser("myadmin")
-                .password(encoder.encode("pass"))
-                .roles("useracct", "adminacct");
+                .userDetailsService(service)
+                .passwordEncoder(encoder);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**").and().ignoring().antMatchers("/h2-console/**");
+        web
+                .ignoring().antMatchers("/resources/**")
+                .and()
+                .ignoring().antMatchers("/h2-console/**")
+                .and()
+                .ignoring().antMatchers("bored/register");
     }
 }
