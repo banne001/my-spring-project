@@ -2,8 +2,8 @@
      Register page for new users to be able to sign up
 
      Author: Blezyl Santos
-     File: add-restaurant.html
-     Date: 10/29/2021
+     File: register.html
+     Date: 12/2/2021
 
 -->
 <!DOCTYPE html>
@@ -14,6 +14,14 @@
 <div class="container p-5 content">
     <h3>Register</h3>
     <form th:action="@{${'/bored/register'}}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label for="inputFName">First Name</label>
+            <input type="text" class="form-control" id="inputFName" th:field="*{fname}">
+        </div>
+        <div class="form-group">
+            <label for="inputLName">Last Name</label>
+            <input type="text" class="form-control" id="inputLName" th:field="*{lname}">
+        </div>
         <div class="form-group">
             <label for="inputName">Username</label>
             <input type="text" class="form-control" id="inputName" th:field="*{username}">

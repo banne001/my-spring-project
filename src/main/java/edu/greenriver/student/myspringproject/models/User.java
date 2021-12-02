@@ -24,6 +24,8 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
+    private String fname;
+    private String lname;
 
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,

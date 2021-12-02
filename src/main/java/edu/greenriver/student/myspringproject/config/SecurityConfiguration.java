@@ -36,10 +36,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
+                .ignoring().antMatchers("/bored/register")
+                .and()
                 .ignoring().antMatchers("/resources/**")
                 .and()
-                .ignoring().antMatchers("/h2-console/**")
-                .and()
-                .ignoring().antMatchers("bored/register");
+                .ignoring().antMatchers("/h2-console/**");
+
     }
 }
