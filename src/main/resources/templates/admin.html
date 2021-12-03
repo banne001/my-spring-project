@@ -14,6 +14,30 @@
 <header th:replace="fragments/parts :: navbar"></header>
 <!-- Main body -->
 <div class="container p-3">
+    <h1>All Users</h1>
+    <div class="container content p-3">
+        <table>
+            <thead>
+            <tr>
+                <td>User Id</td>
+                <td>Username</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Permissions</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.getUserId()}"></td>
+                <td th:text="${user.getUsername()}"></td>
+                <td th:text="${user.getFname()}"></td>
+                <td th:text="${user.getLname()}"></td>
+                <td th:text="${user.getAuthorities().get(0).getAuthority()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
     <h1>About Application</h1>
     <h3>Metrics</h3>
     <div id="metric" class="container">
@@ -26,6 +50,11 @@
     <h3>Mappings</h3>
     <div id="maps" class="container">
 
+    </div>
+    <div class="row m-2">
+        <div class="col p-2">
+            <a href="/../bored"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>
+        </div>
     </div>
 </div>
 <!-- Footer -->

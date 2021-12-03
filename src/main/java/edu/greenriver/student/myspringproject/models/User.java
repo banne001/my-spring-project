@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,12 +24,13 @@ public class User implements UserDetails {
 
     private String username;
     private String password;
+    private String fname;
+    private String lname;
 
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             mappedBy = "user")
     private List<Authority> permissions;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return permissions;
@@ -63,4 +65,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

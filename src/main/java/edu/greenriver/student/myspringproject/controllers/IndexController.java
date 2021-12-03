@@ -1,13 +1,19 @@
 package edu.greenriver.student.myspringproject.controllers;
 
 import edu.greenriver.student.myspringproject.models.Activity;
+import edu.greenriver.student.myspringproject.models.Authority;
 import edu.greenriver.student.myspringproject.models.Restaurant;
+import edu.greenriver.student.myspringproject.models.User;
 import edu.greenriver.student.myspringproject.services.ActivityService;
+import edu.greenriver.student.myspringproject.services.LoginService;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,14 +28,16 @@ public class IndexController {
 
     private RestaurantService service;
     private ActivityService activityService;
+    private LoginService loginService;
 
     /**
      * @param service The Service for the restaurant
      * @param activityService the service for the activities
      */
-    public IndexController(RestaurantService service, ActivityService activityService) {
+    public IndexController(RestaurantService service, ActivityService activityService, LoginService loginService) {
         this.service = service;
         this.activityService = activityService;
+        this.loginService = loginService;
     }
 
     /**
@@ -271,7 +279,41 @@ public class IndexController {
      * @return the admin page to display all metrics of the running app
      */
     @GetMapping("admin")
-    public String getAdmin(){
+    public String getAdmin(Model model){
+        model.addAttribute("users", loginService.allUsers());
+
         return "admin";
     }
+
+    /**
+     * Add A User. Just the Form page
+     * @param model to get variables to the page
+     * @return html page the html template page
+     */
+    @GetMapping("register")
+    public String addUserForm(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+
+        return "register";
+    }
+
+
+    /**
+     * Added User to the database
+     *
+     * @param user
+     * @return
+     */
+    @PostMapping("register")
+    public String handleForm(@ModelAttribute User user){
+        List<Authority> authorityList = new ArrayList<>();
+        authorityList.add(new Authority(0, "user", user));
+
+        user.setPermissions(authorityList);
+
+        loginService.save(user);
+        return "redirect:/bored";
+    }
+
 }
