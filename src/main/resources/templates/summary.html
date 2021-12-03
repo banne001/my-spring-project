@@ -36,20 +36,20 @@
                 <td th:text="${rest.getStars()}"></td>
                 <td th:text="${rest.getType()}"></td>
                 <td>
-                    <a th:text="Edit" th:href="@{'/../bored/restaurant/editRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="Edit" th:href="@{'/../bored/user/restaurant/editRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
                 <td>
-                    <a th:text="Delete" th:href="@{'/../bored/restaurant/deleteRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="Delete" th:href="@{'/../bored/user/restaurant/deleteRestaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
             </tr>
         </tbody>
     </table>
     <div class="row m-2">
         <div class="col p-2">
-            <a href="/../bored/random" th:href="@{/bored/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
+            <a href="/../bored/user/random" th:href="@{/bored/user/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Restaurant</button></a>
         </div>
         <div class="col p-2">
-            <a href="/../bored/restaurant/addRestaurant" th:href="@{/../bored/restaurant/addRestaurant}"><button type="button" class="btn main-button w-100 py-4">Add a New Restaurant</button></a>
+            <a href="/../bored/user/restaurant/addRestaurant" th:href="@{/../bored/user/restaurant/addRestaurant}"><button type="button" class="btn main-button w-100 py-4">Add a New Restaurant</button></a>
         </div>
         <div class="col p-2">
             <a href="/../bored" th:href="@{/../bored}"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>
