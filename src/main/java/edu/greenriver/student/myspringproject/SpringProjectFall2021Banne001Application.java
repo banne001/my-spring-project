@@ -4,6 +4,7 @@ import edu.greenriver.student.myspringproject.dbs.ActivityRepository;
 import edu.greenriver.student.myspringproject.dbs.RestaurantRepository;
 import edu.greenriver.student.myspringproject.dbs.UserRepository;
 import edu.greenriver.student.myspringproject.models.Activity;
+import edu.greenriver.student.myspringproject.models.Authority;
 import edu.greenriver.student.myspringproject.models.Restaurant;
 import edu.greenriver.student.myspringproject.models.User;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
@@ -12,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.security.Permission;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,20 @@ public class SpringProjectFall2021Banne001Application {
         }
         System.out.println("All Activity saved in DB");
 
+        //admin
+        UserRepository userRepo = context.getBean(UserRepository.class);
+        BCryptPasswordEncoder encoder = context.getBean(BCryptPasswordEncoder.class);
+
+        User admin = User.builder().username("admin").password(encoder.encode("admin")).build();
+        Authority adminRole = new Authority(0, "admin", admin);
+        Authority userRole = new Authority(0, "user", admin);
+        List<Authority> roles = new ArrayList<>();
+        roles.add(adminRole);
+        roles.add(userRole);
+        admin.setPermissions(roles);
+
+        userRepo.save(admin);
+        System.out.println("Admin Saved");
     }
 
 

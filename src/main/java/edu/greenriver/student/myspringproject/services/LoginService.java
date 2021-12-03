@@ -8,12 +8,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoginService implements UserDetailsService {
     private UserRepository repo;
+    private BCryptPasswordEncoder encoder;
 
-    public LoginService(UserRepository repo) {
+    public LoginService(UserRepository repo, BCryptPasswordEncoder encoder) {
         this.repo = repo;
+        this.encoder = encoder;
     }
 
     @Override
@@ -26,8 +30,11 @@ public class LoginService implements UserDetailsService {
     }
 
     public User save(User user){
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
         return repo.save(user);
+    }
+
+    public List<User> allUsers(){
+        return repo.findAll();
     }
 }

@@ -279,7 +279,9 @@ public class IndexController {
      * @return the admin page to display all metrics of the running app
      */
     @GetMapping("admin")
-    public String getAdmin(){
+    public String getAdmin(Model model){
+        model.addAttribute("users", loginService.allUsers());
+
         return "admin";
     }
 
@@ -296,8 +298,9 @@ public class IndexController {
         return "register";
     }
 
+
     /**
-     * Added User to database
+     * Added User to the database
      *
      * @param user
      * @return

@@ -31,7 +31,6 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL,
             mappedBy = "user")
     private List<Authority> permissions;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return permissions;
