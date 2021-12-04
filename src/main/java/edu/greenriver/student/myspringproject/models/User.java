@@ -8,10 +8,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.List;
 
+/**
+ User implements UserDetails
+ to easily access username, password and
+ utilizes Spring Security to ensure user is
+ secure
+ @author Blezyl Santos
+ @version 12/3/2021
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -13,6 +13,7 @@
 <body>
 <div class="container p-5 content">
     <h3>Register</h3>
+    <!--  Form: First and Last name, username, and password  -->
     <form th:action="@{${'/register'}}" th:object="${user}" method="post">
         <div class="form-group">
             <label for="inputFName">First Name</label>

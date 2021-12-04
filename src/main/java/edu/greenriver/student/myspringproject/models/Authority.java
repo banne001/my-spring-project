@@ -7,6 +7,13 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+/**
+ Authority implements Granted Authority
+ which allows certain roles to be distinguished
+
+ @author Blezyl Santos
+ @version 12/3/2021
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

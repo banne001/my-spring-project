@@ -7,8 +7,6 @@ import edu.greenriver.student.myspringproject.models.User;
 import edu.greenriver.student.myspringproject.services.ActivityService;
 import edu.greenriver.student.myspringproject.services.LoginService;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
-import org.dom4j.rule.Mode;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +31,7 @@ public class IndexController {
     /**
      * @param service The Service for the restaurant
      * @param activityService the service for the activities
+     * @param loginService the service for the users
      */
     public IndexController(RestaurantService service, ActivityService activityService, LoginService loginService) {
         this.service = service;
@@ -40,6 +39,12 @@ public class IndexController {
         this.loginService = loginService;
     }
 
+    /**
+     * Allows user to login to website
+     *
+     * @param model to add user to template
+     * @return html page
+     */
     @RequestMapping("/login")
     public String login(Model model){
         model.addAttribute("user", new User());
@@ -283,6 +288,8 @@ public class IndexController {
     }
 
     /**
+     * Admin page is able to see all the users and info on the application
+     * @param model to be able to see all users in the page
      * @return the admin page to display all metrics of the running app
      */
     @GetMapping("bored/admin")
@@ -308,9 +315,8 @@ public class IndexController {
 
     /**
      * Added User to the database
-     *
-     * @param user
-     * @return
+     * @param user the user to be added
+     * @return page to be redirected to
      */
     @PostMapping("register")
     public String handleForm(@ModelAttribute User user){

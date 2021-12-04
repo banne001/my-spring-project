@@ -10,5 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 11/24
  */
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
+    /**
+     * @param id id of the Activity
+     * @return Activity correlated to the ID
+     */
     Activity findById(int id);
 }

@@ -1,9 +1,9 @@
 <!--
-     Register page for new users to be able to sign up
+     Login page for users to be able to sign in
 
      Author: Blezyl Santos
      File: register.html
-     Date: 12/2/2021
+     Date: 12/3/2021
 
 -->
 <!DOCTYPE html>
@@ -14,12 +14,14 @@
 <div class="container p-5 content">
     <h3>Sign In</h3>
     <form th:action="@{/login}" th:object="${user}" method="post">
+        <!--  Checks. if error or loggedout      -->
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
+        <!--  Username and Password      -->
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" th:field="*{username}">

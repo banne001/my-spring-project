@@ -7,21 +7,18 @@ import edu.greenriver.student.myspringproject.models.Activity;
 import edu.greenriver.student.myspringproject.models.Authority;
 import edu.greenriver.student.myspringproject.models.Restaurant;
 import edu.greenriver.student.myspringproject.models.User;
-import edu.greenriver.student.myspringproject.services.RestaurantService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.security.Permission;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  Main function to run Spring application
  @author Blezyl Santos
- @version 10.20
+ @version 12/3/2021
  */
 @SpringBootApplication
 public class SpringProjectFall2021Banne001Application {
@@ -29,26 +26,17 @@ public class SpringProjectFall2021Banne001Application {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SpringProjectFall2021Banne001Application.class, args);
 
-        RestaurantRepository repo = context.getBean(RestaurantRepository.class);
+        loadRestaurants(context);
+        loadActivities(context);
+        loadUser(context);
+    }
+
+    /**
+     * Loads all Activity data to the repo, saves to the database
+     * @param context Application Context to create beans
+     */
+    private static void loadActivities(ApplicationContext context) {
         ActivityRepository activityRepository = context.getBean(ActivityRepository.class);
-
-
-        List<Restaurant> allRest = new ArrayList<>(
-                List.of(
-                        Restaurant.builder().name("Pho Dinh").address("2822 Auburn Way N").city("Auburn")
-                                .postalCode("98002").stars(4.2).state("WA").type("Vietnamese").build(),
-                        Restaurant.builder().name("Ting Tong Thai Cafe").address("20910 108th Ave SE").city("Kent")
-                                .postalCode("98031").stars(4.5).state("WA").type("Thai").build(),
-                        Restaurant.builder().name("Oishi Yummy").address("10715 SE Carr Rd").city("Kent")
-                                .postalCode("98055").stars(4.8).state("WA").type("Asain").build(),
-                        Restaurant.builder().name("Szechuan First").address("18124 E Valley Hwy").city("Kent")
-                                .postalCode("98032").stars(4.4).state("WA").type("Chinese").build(),
-                        Restaurant.builder().name("Duke's Seafood").address("757 Southcenter Mall").city("Tukwilla")
-                                .postalCode("98188").stars(4.4).state("WA").type("Seafood").build(),
-                        Restaurant.builder().name("Applebee's Grill and Bar").address("1441 D St NE").city("Auburn")
-                                .postalCode("98002").stars(4.0).state("WA").type("Burgers").build()
-                )
-        );
 
         List<Activity> allActivities = new ArrayList<>(
                 List.of(
@@ -66,19 +54,46 @@ public class SpringProjectFall2021Banne001Application {
                                 .postalCode("98057").state("WA").stars(4.3).build()
                 )
         );
-
-
-
-        for(Restaurant rest : allRest){
-            repo.save(rest);
-        }
-        System.out.println("All Restaurant saved in DB");
-
         for(Activity act : allActivities){
             activityRepository.save(act);
         }
         System.out.println("All Activity saved in DB");
+    }
 
+    /**
+     * Loads all Restaurant data to the repo, saves to the database
+     * @param context Application Context to create beans
+     */
+    private static void loadRestaurants(ApplicationContext context) {
+        RestaurantRepository repo = context.getBean(RestaurantRepository.class);
+
+        List<Restaurant> allRest = new ArrayList<>(
+                List.of(
+                        Restaurant.builder().name("Pho Dinh").address("2822 Auburn Way N").city("Auburn")
+                                .postalCode("98002").stars(4.2).state("WA").type("Vietnamese").build(),
+                        Restaurant.builder().name("Ting Tong Thai Cafe").address("20910 108th Ave SE").city("Kent")
+                                .postalCode("98031").stars(4.5).state("WA").type("Thai").build(),
+                        Restaurant.builder().name("Oishi Yummy").address("10715 SE Carr Rd").city("Kent")
+                                .postalCode("98055").stars(4.8).state("WA").type("Asain").build(),
+                        Restaurant.builder().name("Szechuan First").address("18124 E Valley Hwy").city("Kent")
+                                .postalCode("98032").stars(4.4).state("WA").type("Chinese").build(),
+                        Restaurant.builder().name("Duke's Seafood").address("757 Southcenter Mall").city("Tukwilla")
+                                .postalCode("98188").stars(4.4).state("WA").type("Seafood").build(),
+                        Restaurant.builder().name("Applebee's Grill and Bar").address("1441 D St NE").city("Auburn")
+                                .postalCode("98002").stars(4.0).state("WA").type("Burgers").build()
+                )
+        );
+        for(Restaurant rest : allRest){
+            repo.save(rest);
+        }
+        System.out.println("All Restaurant saved in DB");
+    }
+
+    /**
+     * Loads admin data to the repo, saves to the database
+     * @param context Application Context to create beans
+     */
+    private static void loadUser(ApplicationContext context) {
         //admin
         UserRepository userRepo = context.getBean(UserRepository.class);
         BCryptPasswordEncoder encoder = context.getBean(BCryptPasswordEncoder.class);
