@@ -83,7 +83,7 @@ public class SpringProjectFall2021Banne001Application {
         UserRepository userRepo = context.getBean(UserRepository.class);
         BCryptPasswordEncoder encoder = context.getBean(BCryptPasswordEncoder.class);
 
-        User admin = User.builder().username("admin").password(encoder.encode("admin")).build();
+        User admin = User.builder().username("admin").password(encoder.encode("pass")).build();
         Authority adminRole = new Authority(0, "admin", admin);
         Authority userRole = new Authority(0, "user", admin);
         List<Authority> roles = new ArrayList<>();
