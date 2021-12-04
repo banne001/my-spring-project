@@ -48,10 +48,15 @@
                         <a class="nav-link" href="/bored#aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/bored/admin">Admin</a>
+                        <div th:if="${#httpServletRequest.remoteUser == 'admin'}">
+                            <a class="nav-link" href="/bored/admin" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        </div>
+                        <div th:unless="${#httpServletRequest.remoteUser == 'admin'}">
+                            <a class="nav-link" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <form action="/logout" method="post" id="logout-form">
+                        <form th:action="@{/logout}" method="post" id="logout-form">
                             <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
                         </form>
                     </li>

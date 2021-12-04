@@ -28,7 +28,7 @@
         <tbody>
         <tr th:each="rest: ${activities}">
             <td>
-                <a th:text="${rest.getName()}" th:href="@{'../../bored/user/activity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                <a th:text="${rest.getName()}" th:href="@{'/../bored/user/activity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
             </td>
             <td th:text="${rest.getAddress()}"></td>
             <td th:text="${rest.getCity()}"></td>

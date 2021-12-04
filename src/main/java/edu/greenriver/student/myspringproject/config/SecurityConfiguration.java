@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers("/bored/user/**")
                         .hasAnyAuthority("user", "admin")
                     .antMatchers("/bored/admin")
-                        .hasAnyAuthority("admin")
+                        .hasAuthority("admin")
                     .antMatchers("/**")
                         .permitAll()
                 .and()
@@ -55,11 +55,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .loginPage("/login")
                     .defaultSuccessUrl("/bored")
-                    .failureUrl("/login?error=true")
-                .and()
-                .logout()
-                    .permitAll()
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/login?logout=true");
+                    .failureUrl("/login?error=true");
     }
 }

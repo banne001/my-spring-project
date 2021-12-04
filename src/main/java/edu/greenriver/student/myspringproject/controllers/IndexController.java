@@ -320,7 +320,7 @@ public class IndexController {
         user.setPermissions(authorityList);
 
         loginService.save(user);
-        return "redirect:/bored";
+        return "redirect:/login";
     }
 
 }

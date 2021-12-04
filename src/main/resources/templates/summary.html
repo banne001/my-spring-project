@@ -29,7 +29,7 @@
         <tbody>
             <tr th:each="rest: ${restaurant}">
                 <td>
-                    <a th:text="${rest.getName()}" th:href="@{'/../bored/restaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                    <a th:text="${rest.getName()}" th:href="@{'/../bored/user/restaurant/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
                 </td>
                 <td th:text="${rest.getAddress()}"></td>
                 <td th:text="${rest.getCity()}"></td>
