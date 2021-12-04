@@ -8,7 +8,7 @@
 
 -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="meta(title)">
     <meta charset="UTF-8">
     <title th:text="${title}">Title</title>
@@ -48,17 +48,25 @@
                         <a class="nav-link" href="/bored#aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <div th:if="${#httpServletRequest.remoteUser == 'admin'}">
-                            <a class="nav-link" href="/bored/admin" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        <div sec:authorize="isAuthenticated()">
+                            <div th:if="${#httpServletRequest.remoteUser == 'admin'}">
+                                <a class="nav-link" href="/bored/admin" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                            </div>
+                            <div th:unless="${#httpServletRequest.remoteUser == 'admin'}">
+                                <a class="nav-link" th:inline="text">Hello hg[[${#httpServletRequest.remoteUser}]]!</a>
+                            </div>
                         </div>
-                        <div th:unless="${#httpServletRequest.remoteUser == 'admin'}">
-                            <a class="nav-link" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        <div sec:authorize="isAnonymous()">
+                            <a class="nav-link" href="login">Login!</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <form th:action="@{/logout}" method="post" id="logout-form">
-                            <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
-                        </form>
+                        <div sec:authorize="isAuthenticated()">
+                            <form th:action="@{/logout}" method="post" id="logout-form">
+                                <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
+                            </form>
+                        </div>
+
                     </li>
                 </ul>
             </div>
