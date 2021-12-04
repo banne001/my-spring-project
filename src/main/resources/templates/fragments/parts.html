@@ -39,16 +39,26 @@
                             Do Something!
                         </a>
                         <ul class="dropdown-menu accent" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="../bored/restaurants/summary" th:href="@{/bored/restaurants/summary}">Restaurants</a></li>
-                            <li><a class="dropdown-item" href="../bored/activities/summary" th:href="@{/bored/activities/summary}">Activities</a></li>
-                            <li><a class="dropdown-item" href="/../bored/random" th:href="@{/bored/random}">Random</a></li>
+                            <li><a class="dropdown-item" href="../bored/user/restaurants/summary" th:href="@{/bored/user/restaurants/summary}">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="../bored/user/activities/summary" th:href="@{/bored/user/activities/summary}">Activities</a></li>
+                            <li><a class="dropdown-item" href="/../bored/user/random" th:href="@{/bored/user/random}">Random</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/bored#aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/bored/admin">Admin</a>
+                        <div th:if="${#httpServletRequest.remoteUser == 'admin'}">
+                            <a class="nav-link" href="/bored/admin" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        </div>
+                        <div th:unless="${#httpServletRequest.remoteUser == 'admin'}">
+                            <a class="nav-link" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post" id="logout-form">
+                            <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
+                        </form>
                     </li>
                 </ul>
             </div>

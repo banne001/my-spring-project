@@ -1,0 +1,43 @@
+<!--
+     Register page for new users to be able to sign up
+
+     Author: Blezyl Santos
+     File: register.html
+     Date: 12/2/2021
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/parts :: meta('Register')"></head>
+
+<body>
+<div class="container p-5 content">
+    <h3>Sign In</h3>
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" th:field="*{username}">
+        </div>
+        <div class="form-group pb-5">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}">
+        </div>
+        <div class="row m-2">
+            <div class="col p-2">
+                <button type="button" class="btn main-button w-100 py-4"> <a href="/../bored" th:href="@{/../register}" class="text-decoration-none text-white">Register</a></button>
+            </div>
+            <div class="col p-2">
+                <button type="submit" class="btn main-button w-100 py-4">Sign In!</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

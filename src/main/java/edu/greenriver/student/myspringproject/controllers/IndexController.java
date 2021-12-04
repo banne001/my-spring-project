@@ -7,6 +7,7 @@ import edu.greenriver.student.myspringproject.models.User;
 import edu.greenriver.student.myspringproject.services.ActivityService;
 import edu.greenriver.student.myspringproject.services.LoginService;
 import edu.greenriver.student.myspringproject.services.RestaurantService;
+import org.dom4j.rule.Mode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,6 @@ import java.util.Random;
  * @version 1.1
  */
 @Controller
-@RequestMapping("bored")
 public class IndexController {
 
     private RestaurantService service;
@@ -40,12 +40,19 @@ public class IndexController {
         this.loginService = loginService;
     }
 
+    @RequestMapping("/login")
+    public String login(Model model){
+        model.addAttribute("user", new User());
+
+        return "login";
+    }
+
     /**
      * Map for main pages
      * include "", "/", "index", "index.html"
      * @return html page
      */
-    @RequestMapping(value = {"", "/", "index", "index.html"})
+    @RequestMapping(value = {"", "/", "index", "index.html", "bored"})
     public String home() {
         return "home";
     }
@@ -55,7 +62,7 @@ public class IndexController {
      * @param model to get variables to the page
      * @return html page the html template page
      */
-    @RequestMapping("restaurants/summary")
+    @RequestMapping("bored/user/restaurants/summary")
     public String summary(Model model){
         model.addAttribute("restaurant", service.allRestaurants());
 
@@ -67,7 +74,7 @@ public class IndexController {
      * @param model to get variables to the page
      * @return html page the html template page
      */
-    @RequestMapping("activities/summary")
+    @RequestMapping("bored/user/activities/summary")
     public String summaryActivities(Model model){
         model.addAttribute("activities", activityService.allActivity());
 
@@ -81,7 +88,7 @@ public class IndexController {
      * @param id the id of the restaurant
      * @return html page the html template page
      */
-    @RequestMapping("restaurant/{id}")
+    @RequestMapping("bored/user/restaurant/{id}")
     public String element(Model model, @PathVariable int id){
         model.addAttribute("specificRest", service.findById(id));
 
@@ -95,7 +102,7 @@ public class IndexController {
      * @param id the id of the activity
      * @return html page
      */
-    @RequestMapping("activity/{id}")
+    @RequestMapping("bored/user/activity/{id}")
     public String elementActivity(Model model, @PathVariable int id){
         model.addAttribute("specificRest", activityService.findById(id));
 
@@ -108,7 +115,7 @@ public class IndexController {
      * @param model to get variables to the page
      * @return html page the html template page
      */
-    @RequestMapping("/random")
+    @RequestMapping("bored/user/random")
     public String random(Model model){
         Random random = new Random();
         if(random.nextInt(2) > 0){
@@ -124,11 +131,11 @@ public class IndexController {
      * @param model to get variables to the page
      * @return html page the html template page
      */
-    @GetMapping("restaurant/addRestaurant")
+    @GetMapping("bored/user/restaurant/addRestaurant")
     public String loadForm(Model model){
         model.addAttribute("title", "Add a New Restaurant!");
         model.addAttribute("restaurant", new Restaurant());
-        model.addAttribute("redirectTo", "/bored/restaurant/addRestaurant");
+        model.addAttribute("redirectTo", "/bored/user/restaurant/addRestaurant");
         return "add-restaurant";
     }
 
@@ -137,11 +144,11 @@ public class IndexController {
      * @param model to get variables to the page
      * @return html page the html template page
      */
-    @GetMapping("activity/addActivity")
+    @GetMapping("bored/user/activity/addActivity")
     public String loadFormActivity(Model model){
         model.addAttribute("title", "Add a New Activity!");
         model.addAttribute("activity", new Activity());
-        model.addAttribute("redirectTo", "/bored/activity/addActivity");
+        model.addAttribute("redirectTo", "/bored/user/activity/addActivity");
         return "add-activity";
     }
 
@@ -150,12 +157,12 @@ public class IndexController {
      * @param res The restaurant details
      * @return html page the html template page
      */
-    @PostMapping("restaurant/addRestaurant")
+    @PostMapping("bored/user/restaurant/addRestaurant")
     public String handleForm(@ModelAttribute Restaurant res){
         System.out.println("Posted from form " + res);
 
         service.save(res);
-        return "redirect:/bored/restaurants/summary";
+        return "redirect:/bored/user/restaurants/summary";
     }
 
     /**
@@ -163,12 +170,12 @@ public class IndexController {
      * @param activity the activity details
      * @return html page the html template page
      */
-    @PostMapping("activity/addActivity")
+    @PostMapping("bored/user/activity/addActivity")
     public String handleFormActivity(@ModelAttribute Activity activity){
         System.out.println("Posted from form " + activity);
 
         activityService.save(activity);
-        return "redirect:/bored/activities/summary";
+        return "redirect:/bored/user/activities/summary";
     }
 
     /**
@@ -178,11 +185,11 @@ public class IndexController {
      * @param id the if of the restaurant
      * @return html page the html template page
      */
-    @GetMapping("restaurant/editRestaurant/{id}")
+    @GetMapping("bored/user/restaurant/editRestaurant/{id}")
     public String editForm(Model model, @PathVariable int id){
         model.addAttribute("title", "Update Restaurant");
         model.addAttribute("restaurant", service.findById(id));
-        model.addAttribute("redirectTo", "/bored/restaurant/editRestaurant/" + id);
+        model.addAttribute("redirectTo", "/bored/user/restaurant/editRestaurant/" + id);
 
         return "add-restaurant";
     }
@@ -194,11 +201,11 @@ public class IndexController {
      * @param id the if of the activity
      * @return html page the html template page
      */
-    @GetMapping("activity/editActivity/{id}")
+    @GetMapping("bored/user/activity/editActivity/{id}")
     public String editFormActivity(Model model, @PathVariable int id){
         model.addAttribute("title", "Update Activity");
         model.addAttribute("activity", activityService.findById(id));
-        model.addAttribute("redirectTo", "/bored/activity/editActivity/" + id);
+        model.addAttribute("redirectTo", "/bored/user/activity/editActivity/" + id);
 
         return "add-activity";
     }
@@ -210,12 +217,12 @@ public class IndexController {
      * @param res the restaurant with the details
      * @return html page
      */
-    @PostMapping("restaurant/editRestaurant/{id}")
+    @PostMapping("bored/user/restaurant/editRestaurant/{id}")
     public String handleEditForm(@ModelAttribute Restaurant res){
         System.out.println("Posted from form RESTAURANT" + res);
 
         service.save(res);
-        return "redirect:/bored/restaurants/summary";
+        return "redirect:/bored/user/restaurants/summary";
     }
 
     /**
@@ -224,12 +231,12 @@ public class IndexController {
      * @param activity the restaurant with the details
      * @return html page
      */
-    @PostMapping("activity/editActivity/{id}")
+    @PostMapping("bored/user/activity/editActivity/{id}")
     public String handleEditFormActivity(@ModelAttribute Activity activity){
         System.out.println("Posted from form ACTIVITY" + activity);
 
         activityService.save(activity);
-        return "redirect:/bored/activities/summary";
+        return "redirect:/bored/user/activities/summary";
     }
 
     /**
@@ -238,10 +245,10 @@ public class IndexController {
      * @param id the id of the restaurant
      * @return the restaurant summary page
      */
-    @RequestMapping("restaurant/deleteRestaurant/{id}")
+    @RequestMapping("bored/user/restaurant/deleteRestaurant/{id}")
     public String deleteRestaurant(@PathVariable int id){
         service.deleteByID(id);
-        return "redirect:/bored/restaurants/summary";
+        return "redirect:/bored/user/restaurants/summary";
     }
 
     /**
@@ -250,10 +257,10 @@ public class IndexController {
      * @param id the id of the activity
      * @return the activity summary page
      */
-    @RequestMapping("activity/deleteActivity/{id}")
+    @RequestMapping("bored/user/activity/deleteActivity/{id}")
     public String deleteActivity(@PathVariable int id){
         activityService.deleteByID(id);
-        return "redirect:/bored/activities/summary";
+        return "redirect:/bored/user/activities/summary";
     }
 
 
@@ -261,7 +268,7 @@ public class IndexController {
      * all restaurants in the database using the api
      * @return html page
      */
-    @GetMapping("restaurants")
+    @GetMapping("bored/user/restaurants")
     public String getWebApiRestaurants(){
         return "restaurants";
     }
@@ -270,7 +277,7 @@ public class IndexController {
      * all activities in the database using api
      * @return html page
      */
-    @GetMapping("activities")
+    @GetMapping("bored/user/activities")
     public String getWebApiActivities(){
         return "activities";
     }
@@ -278,7 +285,7 @@ public class IndexController {
     /**
      * @return the admin page to display all metrics of the running app
      */
-    @GetMapping("admin")
+    @GetMapping("bored/admin")
     public String getAdmin(Model model){
         model.addAttribute("users", loginService.allUsers());
 
@@ -313,7 +320,7 @@ public class IndexController {
         user.setPermissions(authorityList);
 
         loginService.save(user);
-        return "redirect:/bored";
+        return "redirect:/login";
     }
 
 }

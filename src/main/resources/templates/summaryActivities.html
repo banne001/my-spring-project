@@ -28,26 +28,26 @@
         <tbody>
         <tr th:each="rest: ${activities}">
             <td>
-                <a th:text="${rest.getName()}" th:href="@{'../../bored/activity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                <a th:text="${rest.getName()}" th:href="@{'/../bored/user/activity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
             </td>
             <td th:text="${rest.getAddress()}"></td>
             <td th:text="${rest.getCity()}"></td>
             <td th:text="${rest.getStars()}"></td>
             <td>
-                <a th:text="Edit" th:href="@{'/../bored/activity/editActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                <a th:text="Edit" th:href="@{'/../bored/user/activity/editActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
             </td>
             <td>
-                <a th:text="Delete" th:href="@{'/../bored/activity/deleteActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
+                <a th:text="Delete" th:href="@{'/../bored/user/activity/deleteActivity/' + ${rest.getId()}}" class="link-danger text-decoration-none"></a>
             </td>
         </tr>
         </tbody>
     </table>
     <div class="row m-2">
         <div class="col p-2">
-            <a href="../bored/random" th:href="@{/bored/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Things To Do</button></a>
+            <a href="../bored/user/random" th:href="@{/bored/user/random}"><button type="button" class="btn main-button w-100 py-4">Find a Random Things To Do</button></a>
         </div>
         <div class="col p-2">
-            <a href="/../bored/activity/addActivity" th:href="@{/../bored/activity/addActivity}"><button type="button" class="btn main-button w-100 py-4">Add a New Activity</button></a>
+            <a href="/../bored/user/activity/addActivity" th:href="@{/../bored/user/activity/addActivity}"><button type="button" class="btn main-button w-100 py-4">Add a New Activity</button></a>
         </div>
         <div class="col p-2">
             <a href="/../bored" th:href="@{/../bored}"><button type="button" class="btn main-button w-100 py-4">Go back home</button></a>

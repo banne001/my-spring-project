@@ -40,5 +40,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
-
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+            http
+                .authorizeRequests()
+                    .antMatchers("/bored/user/**")
+                        .hasAnyAuthority("user", "admin")
+                    .antMatchers("/bored/admin")
+                        .hasAuthority("admin")
+                    .antMatchers("/**")
+                        .permitAll()
+                .and()
+                .formLogin()
+                    .permitAll()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/bored")
+                    .failureUrl("/login?error=true");
+    }
 }

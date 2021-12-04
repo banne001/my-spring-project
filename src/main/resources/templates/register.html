@@ -13,7 +13,7 @@
 <body>
 <div class="container p-5 content">
     <h3>Register</h3>
-    <form th:action="@{${'/bored/register'}}" th:object="${user}" method="post">
+    <form th:action="@{${'/register'}}" th:object="${user}" method="post">
         <div class="form-group">
             <label for="inputFName">First Name</label>
             <input type="text" class="form-control" id="inputFName" th:field="*{fname}">
